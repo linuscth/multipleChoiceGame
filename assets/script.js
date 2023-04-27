@@ -12,8 +12,19 @@ var timerElement = document.querySelector(".timer-count");
 var startButton = document.querySelector('.startButton')
 var timerBox = document.querySelector('.timer-box');
 var done = false;
-var mcButton = document.querySelector('.mcButton');
 var questionNumber = 0;
+var mcButtonA = document.querySelector('.mcButtonA');
+var mcButtonB = document.querySelector('.mcButtonB');
+var mcButtonC = document.querySelector('.mcButtonC');
+var mcButtonD = document.querySelector('.mcButtonD');
+var mcA = document.querySelector('.mcA');
+var mcB = document.querySelector('.mcB');
+var mcC = document.querySelector('.mcC');
+var mcD = document.querySelector('.mcD');
+
+
+
+
 function init() {
 
 }
@@ -25,20 +36,39 @@ function startGame() {
     showQuestion()
 }
 
+// function winGame() {
+//     statusBoard.textContent = "correct!";
+//     ScoreCounter++;
+//     yourPoints.textContent = "yourPoints:" + ScoreCounter;
+//     setWins();
+//     questionNumber++;
+//     showQuestion();
+// }
+// function loseGame() {
+//     statusBoard.textContent = "wrong!";
+//     ScoreCounter -= 0.5;
+//     yourPoints.textContent = "yourPoints:" + ScoreCounter;
+//     setlosses()
+//     showQuestion()
+// }
+
 function winGame() {
     statusBoard.textContent = "correct!";
     ScoreCounter++;
     yourPoints.textContent = "yourPoints:" + ScoreCounter;
-    setWins()
+    setWins();
+    questionNumber++;
+    showQuestion();
 }
+
 function loseGame() {
     statusBoard.textContent = "wrong!";
     ScoreCounter -= 0.5;
     yourPoints.textContent = "yourPoints:" + ScoreCounter;
-    setlosses()
+    setlosses();
+
+    showQuestion();
 }
-
-
 function startTimer(timerCount) {
     timer = setInterval(function () {
         timerCount--;
@@ -51,7 +81,7 @@ function startTimer(timerCount) {
         }
         if (timerCount === 0) {
             clearInterval(timer);
-            displayLoss();
+            displayPoints();
         }
     }
         , 1000);
@@ -60,51 +90,126 @@ function startTimer(timerCount) {
 function showQuestion() {
     var questions = [
         {
+            question: "Are you ready for the test?",
+            choices: ['A. no', 'B. no', 'C. yes', 'no'],
+            correctAnswer: 'C. yes',
+        },
+        {
             question: 'Question 1: Which one of them would turn the fonts bold?',
+            choices: ['A. font-weight: bolder', 'B. color: blue', 'C. background-color:green', 'D. font-size:40px'],
+            correctAnswer: 'A. font-weight: bolder',
         },
         {
             question: 'Question 2: Which one of them would turn the fonts bold?',
+            choices: ['A. font-weight: bolder', 'B. color: blue', 'C. background-color:green', 'D. font-size:40px'],
+            correctAnswer: 'A. font-weight: bolder',
+
         },
         {
             question: 'Question 3: Which one of them would turn the fonts bold?',
+            choices: ['A. font-weight: bolder', 'B. color: blue', 'C. background-color:green', 'D. font-size:40px'],
+            correctAnswer: 'A. font-weight: bolder',
+
         },
         {
             question: 'Question 4: Which one of them would turn the fonts bold?',
+            choices: ['A. font-weight: bolder', 'B. color: blue', 'C. background-color:green', 'D. font-size:40px'],
+            correctAnswer: 'A. font-weight: bolder',
+
         },
         {
             question: 'Question 5: Which one of them would turn the fonts bold?',
+            choices: ['A. font-weight: bolder', 'B. color: blue', 'C. background-color:green', 'D. font-size:40px'],
+            correctAnswer: 'A. font-weight: bolder',
+
         },
         {
             question: 'Question 6: Which one of them would turn the fonts bold?',
+            choices: ['A. font-weight: bolder', 'B. color: blue', 'C. background-color:green', 'D. font-size:40px'],
+            correctAnswer: 'A. font-weight: bolder',
+
         }
 
-    ]
-    var currentQuestion = questions[questionNumber].question;
+    ];
 
-    function displayQuestion() {
+    function displayQuestions() {
+        var currentQuestion = questions[questionNumber].question;
         questionBlock.textContent = currentQuestion;
-    }
-    function nextQuestion() {
-        questionNumber++;
-        if (questionNumber >= questions.length) {
-            done = true;
-        } else {
-            currentQuestion = questions[questionNumber].question;
-            displayQuestion();
-        }
+        mcA.textContent = questions[questionNumber].choices[0];
+        mcB.textContent = questions[questionNumber].choices[1];
+        mcC.textContent = questions[questionNumber].choices[2];
+        mcD.textContent = questions[questionNumber].choices[3];
     }
 
-    mcButton.addEventListener('click', function (event) {
-        var pickedAnswer = event.target.parentNode;
-        if (pickedAnswer.classList.contains('correctAnswer') === false) {
-            loseGame()
-        } else {
-            winGame()
-            nextQuestion();
-        }
-    })
-    displayQuestion()
+    function checkAnswer() {
+
+
+        mcA.addEventListener('click', function () {
+            if (mcA.textContent === questions[questionNumber].correctAnswer) {
+                winGame();
+
+            } else {
+                loseGame();
+            }
+
+        })
+        mcB.addEventListener('click', function () {
+            if (mcB.textContent === questions[questionNumber].correctAnswer) {
+                winGame();
+            } else {
+                loseGame();
+            }
+
+        })
+        mcC.addEventListener('click', function () {
+            if (mcC.textContent === questions[questionNumber].correctAnswer) {
+                winGame();
+            } else {
+                loseGame();
+            }
+
+        })
+        mcD.addEventListener('click', function () {
+            if (mcD.textContent === questions[questionNumber].correctAnswer) {
+                winGame();
+
+            } else {
+                loseGame();
+            }
+
+        })
+
+
+    }
+    displayQuestions();
+
+    checkAnswer();
+
 }
+
+
+
+
+
+
+
+
+
+// function nextQuestion() {
+
+// }
+
+// mcButton.addEventListener('click', function (event) {
+//     var pickedAnswer = event.target.parentNode;
+//     if (pickedAnswer.classList.contains('correctAnswer') === false) {
+//         loseGame()
+//     } else {
+//         winGame()
+//         nextQuestion();
+//     }
+// })
+
+
 
 
 
