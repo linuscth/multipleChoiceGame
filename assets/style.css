@@ -1,0 +1,26 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+
+header {
+    background-color: #385170;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 15px #9fd3c7 solid;
+}
+
+.title {
+    font-family: serif;
+    padding-top: 10px;
+}
+
+.startButton {
+    padding: 5px;
+    background-color: #142d4c;
+    margin: 20px;
+    color: white;
+}
