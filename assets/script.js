@@ -22,12 +22,53 @@ var mcB = document.querySelector('.mcB');
 var mcC = document.querySelector('.mcC');
 var mcD = document.querySelector('.mcD');
 var multipleChoiceBtn = document.querySelectorAll('.multipleChoices');
+var questions = [
+    {
+        question: "Are you ready for the test?",
+        choices: ['A. no', 'B. no', 'C. yes', 'no'],
+        correctAnswer: 'C. yes',
+    },
+    {
+        question: 'Question 1: Which one of them would turn the fonts bold?',
+        choices: ['A. font-weight: bolder', 'B. color: blue', 'C. background-color:green', 'D. font-size:40px'],
+        correctAnswer: 'A. font-weight: bolder',
+    },
+    {
+        question: 'Question 2: Which one of them would turn the fonts bold?',
+        choices: ['A. font-weight: bolder', 'B. color: blue', 'C. background-color:green', 'D. font-size:40px'],
+        correctAnswer: 'A. font-weight: bolder',
+
+    },
+    {
+        question: 'Question 3: Which one of them would turn the fonts bold?',
+        choices: ['A. font-weight: bolder', 'B. color: blue', 'C. background-color:green', 'D. font-size:40px'],
+        correctAnswer: 'A. font-weight: bolder',
+
+    },
+    {
+        question: 'Question 4: Which one of them would turn the fonts bold?',
+        choices: ['A. font-weight: bolder', 'B. color: blue', 'C. background-color:green', 'D. font-size:40px'],
+        correctAnswer: 'A. font-weight: bolder',
+
+    },
+    {
+        question: 'Question 5: Which one of them would turn the fonts bold?',
+        choices: ['A. font-weight: bolder', 'B. color: blue', 'C. background-color:green', 'D. font-size:40px'],
+        correctAnswer: 'A. font-weight: bolder',
+
+    },
+    {
+        question: 'Question 6: Which one of them would turn the fonts bold?',
+        choices: ['A. font-weight: bolder', 'B. color: blue', 'C. background-color:green', 'D. font-size:40px'],
+        correctAnswer: 'A. font-weight: bolder',
+
+    }
+]
 
 
+// function init() {
 
-function init() {
-
-}
+// }
 
 function startGame() {
     timerCount = 75;
@@ -57,8 +98,12 @@ function winGame() {
     ScoreCounter++;
     yourPoints.textContent = "yourPoints:" + ScoreCounter;
     questionNumber++;
+    console.log(questionNumber);
     showQuestion();
-    setWins();
+    if (questionNumber >= questions.length - 1) {
+        console.log("game over");
+    }
+    // setWins();
 
 }
 
@@ -66,7 +111,7 @@ function loseGame() {
     statusBoard.textContent = "wrong!";
     ScoreCounter -= 0.5;
     yourPoints.textContent = "yourPoints:" + ScoreCounter;
-    setlosses();
+    // setlosses();
 
     showQuestion();
 }
@@ -89,50 +134,6 @@ function startTimer(timerCount) {
 }
 
 function showQuestion() {
-    var questions = [
-        {
-            question: "Are you ready for the test?",
-            choices: ['A. no', 'B. no', 'C. yes', 'no'],
-            correctAnswer: 'C. yes',
-        },
-        {
-            question: 'Question 1: Which one of them would turn the fonts bold?',
-            choices: ['A. font-weight: bolder', 'B. color: blue', 'C. background-color:green', 'D. font-size:40px'],
-            correctAnswer: 'A. font-weight: bolder',
-        },
-        {
-            question: 'Question 2: Which one of them would turn the fonts bold?',
-            choices: ['A. font-weight: bolder', 'B. color: blue', 'C. background-color:green', 'D. font-size:40px'],
-            correctAnswer: 'A. font-weight: bolder',
-
-        },
-        {
-            question: 'Question 3: Which one of them would turn the fonts bold?',
-            choices: ['A. font-weight: bolder', 'B. color: blue', 'C. background-color:green', 'D. font-size:40px'],
-            correctAnswer: 'A. font-weight: bolder',
-
-        },
-        {
-            question: 'Question 4: Which one of them would turn the fonts bold?',
-            choices: ['A. font-weight: bolder', 'B. color: blue', 'C. background-color:green', 'D. font-size:40px'],
-            correctAnswer: 'A. font-weight: bolder',
-
-        },
-        {
-            question: 'Question 5: Which one of them would turn the fonts bold?',
-            choices: ['A. font-weight: bolder', 'B. color: blue', 'C. background-color:green', 'D. font-size:40px'],
-            correctAnswer: 'A. font-weight: bolder',
-
-        },
-        {
-            question: 'Question 6: Which one of them would turn the fonts bold?',
-            choices: ['A. font-weight: bolder', 'B. color: blue', 'C. background-color:green', 'D. font-size:40px'],
-            correctAnswer: 'A. font-weight: bolder',
-
-        }
-
-    ];
-
     function displayQuestions() {
         var currentQuestion = questions[questionNumber].question;
         questionBlock.textContent = currentQuestion;
@@ -143,50 +144,50 @@ function showQuestion() {
     }
 
     function checkAnswer() {
-        multipleChoiceBtn.addEventListener('click', function (event) {
-            var chosen = event.target;
-            if (chosen.textContent === questions[questionNumber].correctAnswer) {
+        // multipleChoiceBtn.addEventListener('click', function (event) {
+        //     var chosen = event.target;
+        //     if (chosen.textContent === questions[questionNumber].correctAnswer) {
+        //         winGame();
+        //     } else {
+        //         loseGame();
+        //     }
+        // })
+
+
+        mcA.addEventListener('click', function () {
+            if (mcA.textContent === questions[questionNumber].correctAnswer) {
+                winGame();
+
+            } else {
+                loseGame();
+            }
+
+        })
+        mcB.addEventListener('click', function () {
+            if (mcB.textContent === questions[questionNumber].correctAnswer) {
                 winGame();
             } else {
                 loseGame();
             }
+
         })
+        mcC.addEventListener('click', function () {
+            if (mcC.textContent === questions[questionNumber].correctAnswer) {
+                winGame();
+            } else {
+                loseGame();
+            }
 
+        })
+        mcD.addEventListener('click', function () {
+            if (mcD.textContent === questions[questionNumber].correctAnswer) {
+                winGame();
 
-        // mcA.addEventListener('click', function () {
-        //     if (mcA.textContent === questions[questionNumber].correctAnswer) {
-        //         winGame();
+            } else {
+                loseGame();
+            }
 
-        //     } else {
-        //         loseGame();
-        //     }
-
-        // })
-        // mcB.addEventListener('click', function () {
-        //     if (mcB.textContent === questions[questionNumber].correctAnswer) {
-        //         winGame();
-        //     } else {
-        //         loseGame();
-        //     }
-
-        // })
-        // mcC.addEventListener('click', function () {
-        //     if (mcC.textContent === questions[questionNumber].correctAnswer) {
-        //         winGame();
-        //     } else {
-        //         loseGame();
-        //     }
-
-        // })
-        // mcD.addEventListener('click', function () {
-        //     if (mcD.textContent === questions[questionNumber].correctAnswer) {
-        //         winGame();
-
-        //     } else {
-        //         loseGame();
-        //     }
-
-        // })
+        })
 
 
     }
