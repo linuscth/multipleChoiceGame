@@ -21,7 +21,7 @@ var mcA = document.querySelector('.mcA');
 var mcB = document.querySelector('.mcB');
 var mcC = document.querySelector('.mcC');
 var mcD = document.querySelector('.mcD');
-
+var multipleChoiceBtn = document.querySelectorAll('.multipleChoices');
 
 
 
@@ -56,9 +56,10 @@ function winGame() {
     statusBoard.textContent = "correct!";
     ScoreCounter++;
     yourPoints.textContent = "yourPoints:" + ScoreCounter;
-    setWins();
     questionNumber++;
     showQuestion();
+    setWins();
+
 }
 
 function loseGame() {
@@ -142,42 +143,50 @@ function showQuestion() {
     }
 
     function checkAnswer() {
-
-
-        mcA.addEventListener('click', function () {
-            if (mcA.textContent === questions[questionNumber].correctAnswer) {
-                winGame();
-
-            } else {
-                loseGame();
-            }
-
-        })
-        mcB.addEventListener('click', function () {
-            if (mcB.textContent === questions[questionNumber].correctAnswer) {
+        multipleChoiceBtn.addEventListener('click', function (event) {
+            var chosen = event.target;
+            if (chosen.textContent === questions[questionNumber].correctAnswer) {
                 winGame();
             } else {
                 loseGame();
             }
-
         })
-        mcC.addEventListener('click', function () {
-            if (mcC.textContent === questions[questionNumber].correctAnswer) {
-                winGame();
-            } else {
-                loseGame();
-            }
 
-        })
-        mcD.addEventListener('click', function () {
-            if (mcD.textContent === questions[questionNumber].correctAnswer) {
-                winGame();
 
-            } else {
-                loseGame();
-            }
+        // mcA.addEventListener('click', function () {
+        //     if (mcA.textContent === questions[questionNumber].correctAnswer) {
+        //         winGame();
 
-        })
+        //     } else {
+        //         loseGame();
+        //     }
+
+        // })
+        // mcB.addEventListener('click', function () {
+        //     if (mcB.textContent === questions[questionNumber].correctAnswer) {
+        //         winGame();
+        //     } else {
+        //         loseGame();
+        //     }
+
+        // })
+        // mcC.addEventListener('click', function () {
+        //     if (mcC.textContent === questions[questionNumber].correctAnswer) {
+        //         winGame();
+        //     } else {
+        //         loseGame();
+        //     }
+
+        // })
+        // mcD.addEventListener('click', function () {
+        //     if (mcD.textContent === questions[questionNumber].correctAnswer) {
+        //         winGame();
+
+        //     } else {
+        //         loseGame();
+        //     }
+
+        // })
 
 
     }
