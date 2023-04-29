@@ -21,7 +21,14 @@ header {
 .startButton {
     padding: 5px;
     background-color: #142d4c;
-    margin: 20px;
+    margin: 50px;
     color: white;
 }
 
+.multipleChoices {
+    margin: 10px;
+    border-radius: 10px;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #9b9b9b,
+        -20px -20px 60px #ffffff;
+}
