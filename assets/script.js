@@ -73,7 +73,6 @@ function startGame() {
     statusbar.innerhtml = "Are you ready for the test?"
     startTimer()
     showQuestion()
-    questionBlock.setAttribute()
 }
 
 function winGame() {
@@ -84,9 +83,12 @@ function winGame() {
     console.log(questionNumber);
     showQuestion();
     if (questionNumber >= questions.length - 1) {
-        console.log("game over");
+        questionBlock.setAttribute('style', 'display:none');
+        timerBox.innerHTML('');
+        choiceBlock.setAttribute('style', 'display:none');
+        displayPoints()
     }
-    // setWins();
+    setWins();
 
 }
 
@@ -108,7 +110,7 @@ function startTimer() {
                 displayPoints();
             }
         }
-        if (timerCount === 0) {
+        if (timerCount <= 0) {
             clearInterval(timer);
             displayPoints();
         }
@@ -124,15 +126,15 @@ function showQuestion() {
         mcB.textContent = questions[questionNumber].choices[1];
         mcC.textContent = questions[questionNumber].choices[2];
         mcD.textContent = questions[questionNumber].choices[3];
+
+
     }
 
-    displayQuestions();
+    displayQuestions()
+
 }
 
-function displayPoints() {
-    questionBlock.innerhtml = '';
-    choiceBlock.setAttribute("style", "display:")
-}
+
 
 
 
@@ -193,13 +195,15 @@ mcD.addEventListener('click', function () {
 
 
 
+function setWins() {
+    localStorage.setItem('points', ScoreCounter)
+}
 
 
+function displayPoints() {
+    statusBoard.innerHTML = 'you got ' + ScoreCounter + 'points';
 
-
-
-
-
+}
 
 
 // var questions = [
@@ -328,38 +332,6 @@ mcD.addEventListener('click', function () {
 //         pickedChoice = getParentElement(event.target)
 //         chosen.push(pickedChoice)
 //     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 showQuestion();
 
