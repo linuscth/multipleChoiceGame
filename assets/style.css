@@ -32,3 +32,11 @@ header {
     box-shadow: 20px 20px 60px #9b9b9b,
         -20px -20px 60px #ffffff;
 }
+
+.questionBlock {
+    display: none;
+}
+
+.choiceBlock {
+    display: none;
+}
