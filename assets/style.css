@@ -26,9 +26,13 @@ header {
 }
 
 .multipleChoices {
-    margin: 10px;
-    border-radius: 10px;
-    background: #e0e0e0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    display: block;
+    padding: 5px;
+    margin: 30px;
+    border-style: inset;
+    border-radius: 7px;
     box-shadow: 20px 20px 60px #9b9b9b,
         -20px -20px 60px #ffffff;
 }
@@ -39,4 +43,14 @@ header {
 
 .choiceBlock {
     display: none;
+}
+
+.nameForm {
+    display: none;
+}
+
+.multipleChoices:hover {
+    background-color: #9fd3c7;
+    color: red;
+
 }

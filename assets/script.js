@@ -18,9 +18,7 @@ var mcB = document.querySelector('.mcB');
 var mcC = document.querySelector('.mcC');
 var mcD = document.querySelector('.mcD');
 var multipleChoiceBtn = document.querySelectorAll('.multipleChoices');
-var highestScoreCounter = 0
 var nameForm = document.querySelector('.nameForm');
-var storedPoints = localStorage.getItem("points")
 
 var questions = [
     {
@@ -66,11 +64,9 @@ function init() {
 startButton.addEventListener('click', startGame)
 
 function startGame() {
+    init()
     startButton.disabled = true;
-    timerCount = 100;
-    ScoreCounter = 0;
-    questionNumber = 0;
-    statusBoard.innerHTML = '';
+    reset()
     startTimer()
     displayQuestions()
 
@@ -81,9 +77,7 @@ function winGame() {
     ScoreCounter++;
     yourPoints.textContent = "yourPoints:" + ScoreCounter;
     questionNumber++;
-    console.log(questionNumber);
     if (questionNumber > questions.length - 1) {
-        displayPoints()
         done = true;
     }
     displayQuestions();
@@ -100,17 +94,12 @@ function startTimer() {
     timer = setInterval(function () {
         timerCount--;
         timerBox.textContent = "timer:" + timerCount + 's';
-        if (timerCount >= 0) {
-            if (done && timerCount > 0) {
-                clearInterval(timer);
-                displayPoints();
-            }
-        }
-        if (timerCount <= 0) {
+        if (done || timerCount <= 0) {
             clearInterval(timer);
             displayPoints();
         }
     }
+
         , 1000);
 }
 
@@ -118,6 +107,7 @@ function startTimer() {
 function displayQuestions() {
     questionBlock.setAttribute('style', 'display: block');
     choiceBlock.setAttribute('style', 'display: block');
+    nameForm.setAttribute('style', 'display: none');
     var currentQuestion = questions[questionNumber].question;
     questionBlock.textContent = currentQuestion;
     mcA.textContent = questions[questionNumber].choices[0];
@@ -169,7 +159,8 @@ mcD.addEventListener('click', function () {
 
 
 function setWins() {
-    if (ScoreCounter > storedPoints
+    var previousPoints = localStorage.getItem('points')
+    if (ScoreCounter > previousPoints
     ) {
         localStorage.setItem('points', ScoreCounter)
 
@@ -183,6 +174,7 @@ function displayPoints() {
     questionBlock.setAttribute('style', 'display:none');
     choiceBlock.setAttribute('style', 'display: none');
     timerBox.textContent = "timer:"
+    nameForm.setAttribute('style', 'display: block')
     setWins();
     startButton.disabled = false;
 
@@ -190,12 +182,18 @@ function displayPoints() {
 }
 
 function getPoints() {
-    if (storedPoints === null) {
-        highestScoreCounter = 0;
-    } else {
-        highestScoreCounter = storedPoints;
-    }
-    HighestScoreBox.textContent = 'Highest Score: ' + highestScoreCounter;
+    storedPoints = localStorage.getItem('points')
+    console.log(storedPoints);
+    HighestScoreBox.textContent = 'Highest Score: ' + storedPoints;
+}
+function reset() {
+    done = false;
+    timerCount = 100;
+    ScoreCounter = 0;
+    questionNumber = 0;
+    statusBoard.innerHTML = '';
+    yourPoints.textContent = "yourPoints:" + ScoreCounter;
+
+
 }
 
-init();
