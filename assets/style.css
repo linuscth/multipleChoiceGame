@@ -54,3 +54,10 @@ header {
     color: red;
 
 }
+
+#nameForm {
+    display: none;
+}
+body {
+    background-color: #d0cece;
+}

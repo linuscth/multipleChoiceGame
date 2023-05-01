@@ -8,3 +8,14 @@ The game starts with a start button, which is disabled once the game starts. The
 The game has a list of questions with four multiple-choice answers. The game displays one question at a time, and the player has to select one of the multiple-choice answers. If the player selects the correct answer, the game displays a "correct" message, increments the score by 1, and moves on to the next question. If the player selects the wrong answer, the game displays a "wrong" message, decrements the time left by 5 seconds, and moves on to the next question.
 
 Once all questions are answered, the game ends, and the final score is displayed on the screen along with the player's highest score, which is stored in the browser's local storage.
+
+
+# URL
+repo https://github.com/linuscth/multipleChoiceGameLinks 
+
+URL https://linuscth.github.io/multipleChoiceGame/Links
+
+# screenshot
+![screenshots](./assets/ScreenShot1.png)
+![screenshots](./assets/ScreenShot2.png)
+

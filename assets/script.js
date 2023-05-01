@@ -18,7 +18,7 @@ var mcB = document.querySelector('.mcB');
 var mcC = document.querySelector('.mcC');
 var mcD = document.querySelector('.mcD');
 var multipleChoiceBtn = document.querySelectorAll('.multipleChoices');
-var nameForm = document.querySelector('.nameForm');
+var nameForm = document.querySelector('#nameForm');
 
 var questions = [
     {
@@ -88,6 +88,12 @@ function loseGame() {
     statusBoard.textContent = "wrong!";
     timerCount -= 5;
     yourPoints.textContent = "yourPoints:" + ScoreCounter;
+    questionNumber++;
+    if (questionNumber > questions.length - 1) {
+        done = true;
+    }
+    displayQuestions();
+
 
 }
 function startTimer() {
