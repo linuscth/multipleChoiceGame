@@ -19,6 +19,7 @@ var mcC = document.querySelector('.mcC');
 var mcD = document.querySelector('.mcD');
 var multipleChoiceBtn = document.querySelectorAll('.multipleChoices');
 var nameForm = document.querySelector('#nameForm');
+var submitBtn = document.getElementById('submitBtn');
 
 var questions = [
     {
@@ -59,6 +60,7 @@ var questions = [
 ]
 function init() {
     getPoints()
+    getRecordholder()
 }
 
 startButton.addEventListener('click', startGame)
@@ -181,15 +183,12 @@ function displayPoints() {
     choiceBlock.setAttribute('style', 'display: none');
     timerBox.textContent = "timer:"
     nameForm.setAttribute('style', 'display: block')
-    setWins();
-    startButton.disabled = false;
 
 
 }
 
 function getPoints() {
     storedPoints = localStorage.getItem('points')
-    console.log(storedPoints);
     HighestScoreBox.textContent = 'Highest Score: ' + storedPoints;
 }
 function reset() {
@@ -203,3 +202,26 @@ function reset() {
 
 }
 
+submitBtn.addEventListener('click', function (event) {
+    console.log(event.target);
+    inputName = document.getElementById('inputName')
+    console.log(inputName);
+    previousPoints = localStorage.getItem('points')
+    console.log(ScoreCounter);
+    console.log(previousPoints);
+    if (ScoreCounter > previousPoints
+    ) {
+        localStorage.setItem('recordHolder', inputName.value)
+
+    }
+    setWins();
+    inputName.value = '';
+    startButton.disabled = false;
+    nameForm.setAttribute('style', 'display: none');
+
+
+})
+function getRecordholder() {
+    storedRecordHolder = localStorage.getItem('recordHolder');
+    recordKeeperBox.textContent = 'RecordKeeper Name: ' + storedRecordHolder
+}
