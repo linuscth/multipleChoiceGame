@@ -19,10 +19,24 @@ header {
 }
 
 .startButton {
-    padding: 5px;
-    background-color: #142d4c;
-    margin: 50px;
-    color: white;
+    display: block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid #fbf9f9;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #385170;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.endDiv {
+
+    display: flex;
+
 }
 
 .multipleChoices {
@@ -57,7 +71,10 @@ header {
 
 #nameForm {
     display: none;
+    border: #385170;
+    margin: auto;
 }
+
 body {
     background-color: #d0cece;
 }
